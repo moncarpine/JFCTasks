@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		975E65392EC50EC9003301F2 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975E65382EC50EC9003301F2 /* DataController.swift */; };
 		9765027B2EC3C89000554B3A /* JFCTasksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9765027A2EC3C89000554B3A /* JFCTasksApp.swift */; };
 		9765027D2EC3C89000554B3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9765027C2EC3C89000554B3A /* ContentView.swift */; };
 		9765027F2EC3C89200554B3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9765027E2EC3C89200554B3A /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		975E65382EC50EC9003301F2 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		976502772EC3C89000554B3A /* JFCTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JFCTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9765027A2EC3C89000554B3A /* JFCTasksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JFCTasksApp.swift; sourceTree = "<group>"; };
 		9765027C2EC3C89000554B3A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				976502832EC3C89200554B3A /* Persistence.swift */,
 				976502852EC3C89200554B3A /* JFCTasks.xcdatamodeld */,
 				976502802EC3C89200554B3A /* Preview Content */,
+				975E65382EC50EC9003301F2 /* DataController.swift */,
 			);
 			path = JFCTasks;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				975E65392EC50EC9003301F2 /* DataController.swift in Sources */,
 				976502842EC3C89200554B3A /* Persistence.swift in Sources */,
 				9765027D2EC3C89000554B3A /* ContentView.swift in Sources */,
 				976502872EC3C89200554B3A /* JFCTasks.xcdatamodeld in Sources */,
