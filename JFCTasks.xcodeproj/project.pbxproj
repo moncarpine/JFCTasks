@@ -18,6 +18,7 @@
 		976502842EC3C89200554B3A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976502832EC3C89200554B3A /* Persistence.swift */; };
 		976502872EC3C89200554B3A /* JFCTasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 976502852EC3C89200554B3A /* JFCTasks.xcdatamodeld */; };
 		9765028E2EC3CB7B00554B3A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9765028D2EC3CB7B00554B3A /* README.md */; };
+		97B87D762EC6279D00AC2045 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B87D752EC6279D00AC2045 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		976502832EC3C89200554B3A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		976502862EC3C89200554B3A /* JFCTasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JFCTasks.xcdatamodel; sourceTree = "<group>"; };
 		9765028D2EC3CB7B00554B3A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		97B87D752EC6279D00AC2045 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			children = (
 				975E65422EC52976003301F2 /* TagView.swift */,
 				974CDAD32EC5E5E2008F3166 /* CategoryView.swift */,
+				97B87D752EC6279D00AC2045 /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97B87D762EC6279D00AC2045 /* HomeView.swift in Sources */,
 				975E65412EC51C44003301F2 /* CategoryViewModel.swift in Sources */,
 				975E65392EC50EC9003301F2 /* DataController.swift in Sources */,
 				976502842EC3C89200554B3A /* Persistence.swift in Sources */,
