@@ -17,7 +17,7 @@ struct JFCTasksApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CategoryView(viewModel: CategoryViewModel(context: persistenceController.container.viewContext))
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
