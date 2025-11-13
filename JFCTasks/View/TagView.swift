@@ -8,38 +8,116 @@
 import SwiftUI
 
 struct TagView: View {
-    @Environment(\.managedObjectContext) private var context
-
     @StateObject var viewModel: TagViewModel
     
+    @State private var showSheet = false
+    @State private var selectedTag: Tag?
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(viewModel.tags, id: \.self) { tag in
-                    NavigationLink {
-                        Text("Item at \(tag.name ?? "Unknown")")
+                    Button {
+                        selectedTag = tag
+                        showSheet = true
                     } label: {
-                        HStack {
-                            Text(tag.name ?? "Unknown")
-                            Spacer()
-                            
-                            Button {
-                                print("edit tags")
-                            } label: {
-                                Image(systemName: "pencil")
-                            }
-                            .padding(.trailing, 8)
-                            .buttonStyle(.borderless)
-                            
-                            Button(role: .destructive) {
-                                print("delete tags")
-                                viewModel.deleteTag(tag)
-                            } label: {
-                                Image(systemName: "trash")
-                            }
-                            .padding(.trailing, 8)
-                            .buttonStyle(.borderless)
-                        }
+                        Text(tag.name ?? "Unknown")
+                    }
+                }
+            }
+            .navigationTitle("Tags")
+            .toolbar {
+                ToolbarItem {
+                    Button(action: {
+                        showSheet = true
+                    }) {
+                        Label("Add Item", systemImage: "plus")
+                    }
+                }
+            }
+            .sheet(isPresented: $showSheet, onDismiss: toggleEditing) {
+                if let tag = selectedTag {
+                    EditTagView(viewModel: viewModel, showSheet: $showSheet, tag: tag)
+                        .presentationDetents([.fraction(0.3)])
+                } else {
+                    AddTagView(viewModel: viewModel, showSheet: $showSheet)
+                        .presentationDetents([.fraction(0.3)])
+                }
+            }
+        }
+        .onChange(of: selectedTag) { print($0?.name ?? "") }
+    }
+    
+    private func toggleEditing() {
+        selectedTag = nil
+    }
+}
+
+struct AddTagView: View {
+    @ObservedObject var viewModel: TagViewModel
+    
+    @Binding var showSheet: Bool
+    
+    @State private var tagName = ""
+    
+    var body: some View {
+        NavigationStack {
+            VStack {
+                TextField("Tag Name", text: $tagName)
+                    .padding()
+                    .textFieldStyle(.roundedBorder)
+            }
+            .navigationTitle("Add Tag")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save") {
+                        viewModel.addTag(name: tagName)
+                        showSheet = false
+                    }
+                    .disabled(tagName.isEmpty)
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                        showSheet = false
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct EditTagView: View {
+    @ObservedObject var viewModel: TagViewModel
+    
+    @Binding var showSheet: Bool
+    
+    @State var tag: Tag
+    @State private var tagName = ""
+
+    var body: some View {
+        NavigationStack {
+            VStack {
+                TextField("Tag Name", text: $tagName)
+                    .padding()
+                    .textFieldStyle(.roundedBorder)
+                Button("Delete") {
+                    viewModel.deleteTag(tag)
+                    showSheet = false
+                }
+                .foregroundColor(.red)
+            }
+            .navigationTitle("Edit Tag")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save") {
+                        viewModel.updateTag(tag, to: tagName)
+                        showSheet = false
+                    }
+                    .disabled(tagName.isEmpty)
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                        showSheet = false
                     }
                 }
             }
